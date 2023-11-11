@@ -34,6 +34,7 @@
  -->
 
 <style>
+
     body{
         font-family: arial;
         text-align: center;
@@ -46,7 +47,9 @@
 
     .container-elementi{
         width: 20%;
+        padding-top: 10px;
         border: 3px solid green;
+        margin: 0 auto;
     }
     
 </style>
@@ -77,8 +80,46 @@
             <br />
             <br />
         </div>
+        <br />
         <input type="submit" value="INSERISCI LIBRO" name="inserisci"></input>
+        <input type="submit" value="STAMPA DATABASE" name="stampa"></input>
     </form>
+
+    <?php 
+        
+        require("funzioni_connessione.inc");
+
+        
+
+        if(isset($_POST["inserisici"])){
+
+            if(isset($_POST["isbn"]) && !isEmpty($_POST["isbn"])){
+                if(isset($_POST["titolo"]) && !isEmpty($_POST["titolo"])){
+                    if(isset($_POST["autore"]) && !isEmpty($_POST["autore"])){
+                    
+                        $isbn = $_POST["isbn"];
+                        $titolo = $_POST["titolo"];
+                        $autore = $_POST["autore"];
+
+                        $connessione = connetti('localhost','root','','Volumi');
+                        $queryEseguita = eseguiQuery($connessione,)
+
+                    }
+                }
+            }
+        }
+
+        if(isset($_POST["stampa"])){
+            
+            $connessione = connetti('localhost','root','','Volumi');
+            $queryEseguita = eseguiQuery($connessione,'use Volumi;');
+            $queryEseguita = eseguiQuery($connessione,'select * from Volumi');
+            echo $queryEseguita;
+            $connessione->chiudiConnessione();
+        }
+    
+    ?>
+
 
  </body>
  </html>
