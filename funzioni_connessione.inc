@@ -18,7 +18,7 @@
             return $ris;
             
         }catch(Exception $e){
-            die($e->getMessage());     
+            die("<br /><div class=error>Errore: ".$e->getMessage().".</div>");     
         }
 
     }
@@ -30,13 +30,20 @@
     function generaTab($risultato){
         
         $flag=true;
-        $out = '<table>';
+        $out = '</br></br><div class="container-tabella">';
+        $out.= '<table>';
 
         while($riga = $risultato->fetch_array(MYSQLI_ASSOC)){
 
             if($flag){
                 $k = array_keys($riga);
-                $out.="<tr><th>".$k."</th></tr>";
+                $out.= "<tr>";
+                foreach($k as $intestazione){
+                    $intestazione=strtoupper($intestazione);
+                    $out.="<th>".$intestazione."</th>";
+                }
+
+                $out.="</tr>";
                 $flag = false;
             }
 
@@ -47,8 +54,14 @@
             }
             $out.="</tr>";
         }
-
+        $out.="</table></div>";
         return $out;
     }
+    function inserisciVolume($connessione,$isbn,$titolo,$autore,$stato){
 
+        $queryEseguita = eseguiQuery($connessione,'use Esercizio;');
+        $query = "insert into volumi values($isbn,'$titolo','$autore',curdate(),'$stato')"; 
+        $queryEseguita = eseguiQuery($connessione,$query);
+        return $queryEseguita;
+    }
 ?>

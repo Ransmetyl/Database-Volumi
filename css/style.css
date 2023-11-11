@@ -1,0 +1,62 @@
+
+body{
+    font-family: arial;
+    text-align: center;
+}
+
+input[type=submit]{
+    padding: 10px;
+    font-size: 15px;
+}
+
+.container-elementi{
+    width: 20%;
+    padding-top: 10px;
+    margin: 0 auto;
+    border: 3px solid green;
+}
+
+table{
+    margin: 0 auto;
+}
+
+table,th,td,tr{
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+th{
+    padding: 10px;
+}
+td{
+    padding: 5px;
+}
+.error{
+    color: red;
+}
+
+.works{
+    color:green;
+}
+
+.copyright{
+    position:absolute;
+    bottom:0;
+    right:0;
+    margin: 10px;
+}
+
+.nota{
+    position:absolute;
+    bottom:0;
+    left:0;
+    margin: 10px;   
+    text-align: left;
+}
+
+#stato{
+    
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+
+}
