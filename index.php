@@ -1,3 +1,6 @@
+<?php 
+    require("funzioni_connessione.inc");
+?>
  <!DOCTYPE html>
  <html lang="it">
  <head>
@@ -8,31 +11,29 @@
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
  </head>
  <body>
-    <h1>INSERIMENTO LIBRI</h1>
-    <form action=
-        <?= $_SERVER["PHP_SELF"]?>
-    method="post">
-        <div class="container-elementi">
-            <label for="isbn">ISBN:</label>
-            <input type="number" name="isbn" id="isbn" min="1000" value="1000"></input>
-            <br />
-            <br />
-            <label for="titolo">Titolo:</label>
-            <input type="text" name="titolo" id="titolo"></input>
-            <br />
-            <br />
-            <label for="autore">Autore:</label>
-            <input type="text" name="autore" id="autore"></input>
-            <br />
-            <br />
-            <label for="stato">Stato: </label>
+    <fieldset id="fieldset">
+    <legend align="center"><h1>INSERIMENTO LIBRI</h1></legend>
+        <form action= <?= $_SERVER["PHP_SELF"]?> method="post">
+                <label for="isbn">ISBN:</label>
+                <input type="number" name="isbn" id="isbn" min="1000" value="1000"></input>
+                <br />
+                <br />
+                <label for="titolo">Titolo:</label>
+                <input type="text" name="titolo" id="titolo"></input>
+                <br />
+                <br />
+                <label for="autore">Autore:</label>
+                <input type="text" name="autore" id="autore"></input>
+                <br />
+                <br />
+    </fieldset>
+        <br />
+        <label for="stato">Stato: </label>
             <select name="stato" id="stato">
                 <option value="P">PRESTATO</option>
-                <option value="N">NON PRESTATO</option>
+                <option value="N" selected>NON PRESTATO</option>
             </select>
-            <br />
-            <br />
-        </div>
+        <br />
         <br />
         <input type="submit" value="INSERISCI LIBRO" name="inserisci"></input>
         <input type="submit" value="STAMPA DATABASE" name="stampa"></input>
@@ -40,8 +41,6 @@
 
     <?php 
         
-        require("funzioni_connessione.inc");
-
         if(isset($_POST["inserisci"])){
 
             if(isset($_POST["isbn"]) && !empty($_POST["isbn"])){
@@ -51,9 +50,9 @@
                         $isbn = $_POST["isbn"];
                         $titolo = $_POST["titolo"];
                         $autore = $_POST["autore"];
-                        $stato = $_POST["stato"];
+                        //$stato = $_POST["stato"];
                         $connessione = connetti('localhost','root','','Esercizio');
-                        $queryEseguita = inserisciVolume($connessione,$isbn,$titolo,$autore,$stato);
+                        $queryEseguita = inserisciVolume($connessione,$isbn,$titolo,$autore,'N');
 
                         if($queryEseguita)
                             echo "<br /><div class=works>Query eseguita con successo.</div>";
@@ -77,7 +76,7 @@
 
     ?>
 
-    <div class="copyright">© Pizzolato Michelangelo 5AII</div>
-    <div class="nota">Database utilizzato: Esercizio</br>Nome della tabella: volumi</div>
+    <div class="copyright"><p>© Pizzolato Michelangelo 5AII</p></div>
+    <div class="nota"><p>Database utilizzato: Esercizio</br>Nome della tabella: volumi</p></div>
  </body>
  </html>

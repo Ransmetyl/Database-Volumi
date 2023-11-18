@@ -7,7 +7,7 @@
             return $connessione;
             
         }catch(Exception $e){
-            header(Location("index.php"));
+            header('Location: index.php');
             die($e->getMessage());
         }
     }
@@ -37,7 +37,8 @@
 
             if($flag){
                 $k = array_keys($riga);
-                $out.= "<tr>";
+                $out.= "<th>Delete</th><th>Modify</th>";
+
                 foreach($k as $intestazione){
                     $intestazione=strtoupper($intestazione);
                     $out.="<th>".$intestazione."</th>";
@@ -48,7 +49,14 @@
             }
 
             $out.= "<tr>";
+            if($riga['prestato'] == 'N')
+                $out.="<td><a href=delete.php?isbn=".$riga['isbn'].">Delete</td>";
+            else 
+                $out.= '<td>&nbsp</td>';
+            $url = http_build_query($riga,null,null,PHP_QUERY_RFC3986);
 
+            $out.="<td><a href=modify.php?".$url.">Modify</td>";
+           
             foreach($riga as $v){
                 $out.="<td>$v</td>";
             }
