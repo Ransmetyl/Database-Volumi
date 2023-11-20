@@ -53,7 +53,7 @@
                 $out.="<td><a href=delete.php?isbn=".$riga['isbn'].">Delete</td>";
             else 
                 $out.= '<td>&nbsp</td>';
-            $url = http_build_query($riga,null,null,PHP_QUERY_RFC3986);
+            $url = http_build_query($riga,null,'&',PHP_QUERY_RFC3986);
 
             $out.="<td><a href=modify.php?".$url.">Modify</td>";
            
@@ -72,4 +72,26 @@
         $queryEseguita = eseguiQuery($connessione,$query);
         return $queryEseguita;
     }
+
+    function modificaValori($isbn,$titolo,$autore,$data,$prestato){
+
+        $query = "update volumi set 
+                isbn=". "'$isbn'".
+                "titolo="."'$titolo'".
+                "autore="."'$autore'".
+                "data="."'current_date'".
+                "prestato="."'$prestato'
+                where isbn='$isbn'";
+
+        $conn = connetti("localhost","root","","esercizio");
+
+        $queryEseguita = eseguiQuery($conn,$query);
+
+        if($queryEseguita)
+            echo "<br /><div class=works>Modifica eseguita con successo.</div>";
+        else
+            echo "<br /><div class=error>Errore nella query.</div>";
+        
+    }   
+
 ?>

@@ -1,4 +1,5 @@
 <?php 
+    require('funzioni_connessione.inc');
 
     $isbn = $_GET["isbn"];
     $titolo = $_GET["titolo"];
@@ -54,6 +55,25 @@
         if(isset($_POST['indietro']))
             header('Location: index.php');
 
+        if(isset($_POST['modifica'])){
+
+            if(isset($_POST['isbn']))
+                $isbn = $_POST['isbn'];
+            
+            if(isset($_POST['titolo']))
+                $titolo = $_POST['titolo'];
+
+            if(isset($_POST['isbn']))
+                $autore = $_POST['autore'];
+
+            if(isset($_POST['prestato']))
+                $isbn = $_POST['prestato'];
+
+            modificaValori($isbn,$titolo,$autore,$data,$prestato); 
+                
+        }
+
+    
     ?>
 
 
