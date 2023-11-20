@@ -73,24 +73,21 @@
         return $queryEseguita;
     }
 
-    function modificaValori($isbn,$titolo,$autore,$data,$prestato){
+    function modificaValori($isbn_vecchio,$isbn,$titolo,$autore,$data,$prestato){
 
         $query = "update volumi set 
-                isbn=". "'$isbn'".
-                "titolo="."'$titolo'".
-                "autore="."'$autore'".
-                "data="."'current_date'".
-                "prestato="."'$prestato'
-                where isbn='$isbn'";
+                isbn=". "$isbn".
+                ",titolo="."'$titolo'".
+                ",autore="."'$autore'".
+                ",data="."current_date".
+                ",prestato="."'$prestato'
+                where isbn='$isbn_vecchio'";
 
         $conn = connetti("localhost","root","","esercizio");
 
-        $queryEseguita = eseguiQuery($conn,$query);
+        //$queryEseguita = eseguiQuery($conn,$query);
 
-        if($queryEseguita)
-            echo "<br /><div class=works>Modifica eseguita con successo.</div>";
-        else
-            echo "<br /><div class=error>Errore nella query.</div>";
+        echo $query;
         
     }   
 

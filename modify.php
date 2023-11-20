@@ -24,7 +24,7 @@
     <legend align="center"><h1>MODIFICA</h1></legend>
         <form action= <?= $_SERVER["PHP_SELF"]?> method="post">
                 <label for="isbn">ISBN:</label>
-                <input type="number" name="isbn" id="isbn" min="1000" value="<?php echo $isbn?>"></input>
+                <input type="number" name="isbn" id="isbn" min="1000" value="<?php echo $isbn?>" readonly></input>
                 <br />
                 <br />
                 <label for="titolo">Titolo:</label>
@@ -42,7 +42,7 @@
         <label for="stato">Stato: </label>
             <select name="stato" id="stato">
                 <option value="P"<?php if($prestato == 'P') echo "selected"?>>PRESTATO</option>
-                <option value="P"<?php if($prestato == 'N') echo "selected"?>>NON PRESTATO</option>
+                <option value="N"<?php if($prestato == 'N') echo "selected"?>>NON PRESTATO</option>
             </select>
         <br />
         <br />
@@ -57,19 +57,25 @@
 
         if(isset($_POST['modifica'])){
 
+            $isbn_vecchio = $isbn;
+
             if(isset($_POST['isbn']))
                 $isbn = $_POST['isbn'];
             
+
             if(isset($_POST['titolo']))
                 $titolo = $_POST['titolo'];
 
             if(isset($_POST['isbn']))
                 $autore = $_POST['autore'];
 
-            if(isset($_POST['prestato']))
-                $isbn = $_POST['prestato'];
+            if(isset($_POST['stato']))
+                $prestato = $_POST['stato'];
+                
 
-            modificaValori($isbn,$titolo,$autore,$data,$prestato); 
+            modificaValori($isbn_vecchio,$isbn,$titolo,$autore,$data,$prestato); 
+        
+            //header('Location: index.php');
                 
         }
 
