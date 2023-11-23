@@ -62,7 +62,6 @@
             if(isset($_POST['isbn']))
                 $isbn = $_POST['isbn'];
             
-
             if(isset($_POST['titolo']))
                 $titolo = $_POST['titolo'];
 
