@@ -57,7 +57,7 @@
 
         if(isset($_POST['modifica'])){
 
-            $isbn_vecchio = $isbn;
+            $isbn_vecchio = $_POST["isbn"];
 
             if(isset($_POST['isbn']))
                 $isbn = $_POST['isbn'];
@@ -74,13 +74,14 @@
 
             modificaValori($isbn_vecchio,$isbn,$titolo,$autore,$data,$prestato); 
         
-            //header('Location: index.php');
+            header('Location: index.php');
                 
         }
 
     
     ?>
 
-
+    <div class="copyright"><p>© Pizzolato Michelangelo 5AII</p></div>
+    <div class="nota"><p>Nome database: esercizio</br>Nome tabella: volumi</p></div>
 </body>
 </html>

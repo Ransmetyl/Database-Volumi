@@ -77,6 +77,6 @@
     ?>
 
     <div class="copyright"><p>© Pizzolato Michelangelo 5AII</p></div>
-    <div class="nota"><p>Database utilizzato: Esercizio</br>Nome della tabella: volumi</p></div>
+    <div class="nota"><p>Nome database: esercizio</br>Nome tabella: volumi</p></div>
  </body>
  </html>

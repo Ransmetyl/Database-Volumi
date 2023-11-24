@@ -79,15 +79,15 @@
                 isbn=". "$isbn".
                 ",titolo="."'$titolo'".
                 ",autore="."'$autore'".
-                ",data="."current_date".
+                ",data_prestito="."current_date".
                 ",prestato="."'$prestato'
                 where isbn='$isbn_vecchio'";
 
         $conn = connetti("localhost","root","","esercizio");
 
-        //$queryEseguita = eseguiQuery($conn,$query);
+        $queryEseguita = eseguiQuery($conn,$query);
 
-        echo $query;
+        //echo $query;
         
     }   
 
