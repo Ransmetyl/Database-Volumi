@@ -1,0 +1,53 @@
+<!-- COMANDI DI MYSQL ---!>    
+
+Entrare in mysql
+    mysql -u root  
+
+Mostra tutti i database 
+    show databases;
+
+Crea un database:
+    create database nome_database;
+
+Eliminare un database:
+    drop database nome_database;
+
+Come fare richieste ad un database?
+
+    1. use nome_database;
+
+    crea una tabella
+
+    create table nome_tabella(
+    
+        nome_campo1 tipo primary key,
+        nome_campo2 tipo not null
+
+    );
+
+    select * from nome_database;
+    
+    restituisce la tabella completa.
+
+    cancella una tupla
+         delete from nome_database where <condizone> and primary_key = valore_da_cancellare;
+    
+Mostrare le caratteristiche di una tabella 
+    describe nome_taella
+
+
+
+Modificare lo schema di una tabella:
+
+    alter table nome_tabella + comando:
+    
+    comandi: 
+        -add    <campo> aggiunge una caratteristica   
+        -drop   <campo> rimuove una caratteristica
+        -change <campo>    
+        -modify <campo>
+        -rename <campo> rinomina una caratteristica
+
+backup:
+    mysqldump nome_database > nomeFile.sql -u root
+    il backup si trova nella cartella xampp
