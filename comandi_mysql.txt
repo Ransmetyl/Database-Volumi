@@ -44,10 +44,14 @@ Modificare lo schema di una tabella:
     comandi: 
         -add    <campo> aggiunge una caratteristica   
         -drop   <campo> rimuove una caratteristica
-        -change <campo>    
-        -modify <campo>
+        -change <campo> modifica il NOME di un campo (vecchio, nuovo)
+        -modify <campo> modifica tipo, proprietà o altro. NON il nome
         -rename <campo> rinomina una caratteristica
 
 backup:
     mysqldump nome_database > nomeFile.sql -u root
     il backup si trova nella cartella xampp
+
+inserire dati 
+
+    insert into nome_tabella values (valori,separati,da,virgola)
