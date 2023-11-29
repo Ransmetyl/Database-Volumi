@@ -55,3 +55,6 @@ backup:
 inserire dati 
 
     insert into nome_tabella values (valori,separati,da,virgola)
+
+
+usare default se vuoi avere un valore di default piuttosto che non mettere nulla.
